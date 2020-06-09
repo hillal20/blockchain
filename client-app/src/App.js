@@ -1,40 +1,14 @@
+// @ts-nocheck
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Web3 from "web3";
+import { helper } from "./helper";
 
-function App() {
+const App = () => {
   const [task, setTak] = useState("");
   const [account, setAccount] = useState("");
+  const [toDoListContract, setToDoListContract] = useState({});
 
-  window.addEventListener("load", async () => {
-    if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum);
-      try {
-        await window.ethereum.enable();
-        console.log("ethereum ===> ", window.ethereum);
-
-        setAccount(window.web3.eth.accounts.givenProvider.selectedAddress);
-        window.web3.eth.sendTransaction({
-          /* ... */
-        });
-      } catch (error) {
-        console.log(" err ===> User denied account access...");
-      }
-    } else if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider);
-      console.log("web3===> ", window.web3.eth);
-      // Acccounts always exposed
-      window.web3.eth.sendTransaction({
-        /* ... */
-      });
-    }
-    // Non-dapp browsers...
-    else {
-      console.log(
-        "Non-Ethereum browser detected. You should consider trying MetaMask!"
-      );
-    }
-  });
+  window.addEventListener("load", helper(setAccount), setToDoListContract);
 
   useEffect(() => {}, []);
 
@@ -71,6 +45,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
