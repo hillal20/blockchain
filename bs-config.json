@@ -1,0 +1,7 @@
+{
+  "server": {
+    "baseDir": ["./client-app/public", "./build/contracts"],
+    "files": ["./client-app/src/*.{html,htm,css,js}"],
+    "routes": { "/vendor": "./node_modules" }
+  }
+}

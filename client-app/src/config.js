@@ -1,4 +1,4 @@
-export const TODO_LIST_ADDRESS = "0x94Fa5b73E7C81b4479Dbe38D61CDa48f58B3E97c";
+export const TODO_LIST_ADDRESS = "0x7ACCEb3668BfD83D4CA5568a147aAb7AC81827dd";
 
 export const TODO_LIST_ABI = [
   {
@@ -6,36 +6,66 @@ export const TODO_LIST_ABI = [
     payable: false,
     stateMutability: "nonpayable",
     type: "constructor",
-    constant: undefined,
   },
   {
     constant: true,
     inputs: [],
     name: "taskCount",
-    outputs: [[Object]],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     payable: false,
     stateMutability: "view",
     type: "function",
-    signature: "0xb6cb58a5",
   },
   {
     constant: true,
-    inputs: [[Object]],
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
     name: "tasks",
-    outputs: [[Object], [Object], [Object]],
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "id",
+        type: "uint256",
+      },
+      {
+        internalType: "string",
+        name: "content",
+        type: "string",
+      },
+      {
+        internalType: "bool",
+        name: "completed",
+        type: "bool",
+      },
+    ],
     payable: false,
     stateMutability: "view",
     type: "function",
-    signature: "0x8d977672",
   },
   {
     constant: false,
-    inputs: [[Object]],
+    inputs: [
+      {
+        internalType: "string",
+        name: "passedContent",
+        type: "string",
+      },
+    ],
     name: "createTask",
     outputs: [],
     payable: false,
     stateMutability: "nonpayable",
     type: "function",
-    signature: "0x111002aa",
   },
 ];

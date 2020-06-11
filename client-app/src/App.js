@@ -7,15 +7,27 @@ const App = () => {
   const [task, setTak] = useState("");
   const [account, setAccount] = useState("");
   const [toDoListContract, setToDoListContract] = useState({});
-
-  window.addEventListener("load", helper(setAccount), setToDoListContract);
-
-  useEffect(() => {}, []);
+  const [taskCount, setTaskCount] = useState("");
+  const [tasks, setTasks] = useState([]);
+  useEffect(() => {
+    window.addEventListener(
+      "load",
+      helper(setAccount, setToDoListContract, setTaskCount, setTasks)
+    );
+  }, [setToDoListContract]);
 
   return (
     <div className="App container">
       <h1> Welcome to React App</h1>
       <h3> Account : {account}</h3>
+      <h3> taskCount # : {taskCount}</h3>
+      <div>
+        {" "}
+        List Of tasks :{" "}
+        {tasks.map((t) => (
+          <div>{t.content}</div>
+        ))}
+      </div>
       <div
         className="form"
         style={{

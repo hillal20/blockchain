@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "dev": "lite-server",
+    "dev": "cd ./client-app  && npm start",
     "test": "echo \"Error: no test specified\" && sexit 1"
   },
   "author": "gregory@dappuniversity.com",
