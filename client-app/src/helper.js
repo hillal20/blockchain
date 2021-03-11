@@ -23,7 +23,7 @@ export const helper = async (
         TODO_LIST_ADDRESS
       );
       setToDoListContract(todoListContract);
-      console.log("toDoListContract===> ", todoListContract);
+      // console.log("toDoListContract===> ", todoListContract);
 
       const taskCountPromise = await todoListContract.methods.taskCount();
       const taskCount = await taskCountPromise.call();
@@ -31,7 +31,7 @@ export const helper = async (
 
       for (let i = 0; i < taskCount; i++) {
         const task = await todoListContract.methods.tasks(i).call();
-        setTasks((oldTasks) => [...oldTasks, task]);
+        task.content !== "" && setTasks((oldTasks) => [...oldTasks, task]);
         console.log("taskCount===> ", task);
       }
 

@@ -14,7 +14,9 @@ const App = () => {
       "load",
       helper(setAccount, setToDoListContract, setTaskCount, setTasks)
     );
-  }, [setToDoListContract]);
+  }, [setToDoListContract, taskCount, setAccount]);
+
+  console.log("contract===>", toDoListContract.methods);
 
   return (
     <div className="App container">
@@ -24,8 +26,11 @@ const App = () => {
       <div>
         {" "}
         List Of tasks :{" "}
-        {tasks.map((t) => (
-          <div>{t.content}</div>
+        {tasks.map((t, i) => (
+          <div key={i}>
+            <input type="checkbox" />
+            {t.content}
+          </div>
         ))}
       </div>
       <div
@@ -50,6 +55,10 @@ const App = () => {
           className="todo-form-button"
           onClick={() => {
             console.log(" send  ====> ", task);
+            toDoListContract.methods
+              .createTask(task)
+              .send({ from: account })
+              .once("receipt", (res) => console.log("res ==> ", res));
           }}
         >
           Save
